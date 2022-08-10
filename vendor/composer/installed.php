@@ -1433,6 +1433,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'yiisoft/yii2-redis' => array(
+            'pretty_version' => '2.0.17',
+            'version' => '2.0.17.0',
+            'reference' => '222c6a4340fdf5124f7fb101d026d98e48bf940e',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../yiisoft/yii2-redis',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'yiisoft/yii2-swiftmailer' => array(
             'pretty_version' => '2.1.3',
             'version' => '2.1.3.0',

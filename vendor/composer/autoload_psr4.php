@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'yii\\swiftmailer\\' => array($vendorDir . '/yiisoft/yii2-swiftmailer/src'),
+    'yii\\redis\\' => array($vendorDir . '/yiisoft/yii2-redis/src'),
     'yii\\queue\\sync\\' => array($vendorDir . '/yiisoft/yii2-queue/src/drivers/sync'),
     'yii\\queue\\stomp\\' => array($vendorDir . '/yiisoft/yii2-queue/src/drivers/stomp'),
     'yii\\queue\\sqs\\' => array($vendorDir . '/yiisoft/yii2-queue/src/drivers/sqs'),
@@ -35,7 +36,7 @@ return array(
     'trntv\\aceeditor\\' => array($vendorDir . '/trntv/yii2-aceeditor/src'),
     'tests\\' => array($baseDir . '/tests'),
     'rmrevin\\yii\\fontawesome\\' => array($vendorDir . '/rmrevin/yii2-fontawesome'),
-    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
+    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
     'kartik\\widgets\\' => array($vendorDir . '/kartik-v/yii2-widgets/src'),
     'kartik\\typeahead\\' => array($vendorDir . '/kartik-v/yii2-widget-typeahead/src'),
     'kartik\\touchspin\\' => array($vendorDir . '/kartik-v/yii2-widget-touchspin/src'),
@@ -90,7 +91,7 @@ return array(
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src/Prophecy'),
     'Probe\\' => array($vendorDir . '/trntv/probe/src'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
-    'League\\Uri\\' => array($vendorDir . '/league/uri-hostname-parser/src', $vendorDir . '/league/uri-interfaces/src', $vendorDir . '/league/uri-components/src', $vendorDir . '/league/uri-manipulations/src', $vendorDir . '/league/uri-parser/src', $vendorDir . '/league/uri-schemes/src'),
+    'League\\Uri\\' => array($vendorDir . '/league/uri-components/src', $vendorDir . '/league/uri-hostname-parser/src', $vendorDir . '/league/uri-interfaces/src', $vendorDir . '/league/uri-manipulations/src', $vendorDir . '/league/uri-parser/src', $vendorDir . '/league/uri-schemes/src'),
     'League\\MimeTypeDetection\\' => array($vendorDir . '/league/mime-type-detection/src'),
     'League\\Glide\\' => array($vendorDir . '/league/glide/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
@@ -109,5 +110,5 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Codeception\\PHPUnit\\' => array($vendorDir . '/codeception/phpunit-wrapper/src'),
     'Codeception\\Extension\\' => array($vendorDir . '/codeception/codeception/ext'),
-    'Codeception\\' => array($vendorDir . '/codeception/stub/src', $vendorDir . '/codeception/codeception/src/Codeception'),
+    'Codeception\\' => array($vendorDir . '/codeception/codeception/src/Codeception', $vendorDir . '/codeception/stub/src'),
 );

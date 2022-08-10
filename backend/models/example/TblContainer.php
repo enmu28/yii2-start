@@ -35,12 +35,15 @@ class TblContainer extends ActiveRecord
         ];
     }
 
-    public function rules(){
+    public function rules()
+    {
         return [
             [
                 ['id', 'id_vendor', 'id_measurement_system', 'price', 'created_at'], 'required',
                 'message' => '{attribute} not value ',
             ],
+
+            [['id_vendor', 'id_measurement_system', 'price'], 'integer'],
             [
                 ['id'], 'unique', 'message'=>'{attribute}:{value} already exists!',
             ],

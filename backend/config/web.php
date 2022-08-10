@@ -18,6 +18,18 @@ $config = [
             'enableAutoLogin' => true,
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class,
         ],
+        'redis'         => [
+            'class'    => 'yii\redis\Connection',
+            'hostname' => 'docker_redis',
+            'port'     => 6379,
+            'database' => 0,
+        ],
+        'session'       => [
+            'class' => 'yii\redis\Session',
+        ],
+        'cache'         => [
+            'class' => 'yii\redis\Cache',
+        ],
     ],
     'modules' => [
         'content' => [

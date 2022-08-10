@@ -36,6 +36,7 @@ class ComposerStaticInitbce9f267c609f1754e36b2a218aeb835
         'y' => 
         array (
             'yii\\swiftmailer\\' => 16,
+            'yii\\redis\\' => 10,
             'yii\\queue\\sync\\' => 15,
             'yii\\queue\\stomp\\' => 16,
             'yii\\queue\\sqs\\' => 14,
@@ -195,6 +196,10 @@ class ComposerStaticInitbce9f267c609f1754e36b2a218aeb835
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/src',
         ),
+        'yii\\redis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-redis/src',
+        ),
         'yii\\queue\\sync\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-queue/src/drivers/sync',
@@ -310,8 +315,8 @@ class ComposerStaticInitbce9f267c609f1754e36b2a218aeb835
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'kartik\\widgets\\' => 
         array (
@@ -531,9 +536,9 @@ class ComposerStaticInitbce9f267c609f1754e36b2a218aeb835
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-hostname-parser/src',
-            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-            2 => __DIR__ . '/..' . '/league/uri-components/src',
+            0 => __DIR__ . '/..' . '/league/uri-components/src',
+            1 => __DIR__ . '/..' . '/league/uri-hostname-parser/src',
+            2 => __DIR__ . '/..' . '/league/uri-interfaces/src',
             3 => __DIR__ . '/..' . '/league/uri-manipulations/src',
             4 => __DIR__ . '/..' . '/league/uri-parser/src',
             5 => __DIR__ . '/..' . '/league/uri-schemes/src',
@@ -612,8 +617,8 @@ class ComposerStaticInitbce9f267c609f1754e36b2a218aeb835
         ),
         'Codeception\\' => 
         array (
-            0 => __DIR__ . '/..' . '/codeception/stub/src',
-            1 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            0 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            1 => __DIR__ . '/..' . '/codeception/stub/src',
         ),
     );
 
@@ -4384,6 +4389,14 @@ class ComposerStaticInitbce9f267c609f1754e36b2a218aeb835
         'yii\\rbac\\PhpManager' => __DIR__ . '/..' . '/yiisoft/yii2/rbac/PhpManager.php',
         'yii\\rbac\\Role' => __DIR__ . '/..' . '/yiisoft/yii2/rbac/Role.php',
         'yii\\rbac\\Rule' => __DIR__ . '/..' . '/yiisoft/yii2/rbac/Rule.php',
+        'yii\\redis\\ActiveQuery' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/ActiveQuery.php',
+        'yii\\redis\\ActiveRecord' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/ActiveRecord.php',
+        'yii\\redis\\Cache' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/Cache.php',
+        'yii\\redis\\Connection' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/Connection.php',
+        'yii\\redis\\LuaScriptBuilder' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/LuaScriptBuilder.php',
+        'yii\\redis\\Mutex' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/Mutex.php',
+        'yii\\redis\\Session' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/Session.php',
+        'yii\\redis\\SocketException' => __DIR__ . '/..' . '/yiisoft/yii2-redis/src/SocketException.php',
         'yii\\rest\\Action' => __DIR__ . '/..' . '/yiisoft/yii2/rest/Action.php',
         'yii\\rest\\ActiveController' => __DIR__ . '/..' . '/yiisoft/yii2/rest/ActiveController.php',
         'yii\\rest\\Controller' => __DIR__ . '/..' . '/yiisoft/yii2/rest/Controller.php',
