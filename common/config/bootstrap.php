@@ -10,6 +10,7 @@ require_once __DIR__ . '/../helpers.php';
 Yii::setAlias('@base', dirname(__DIR__, 2) . '/');
 Yii::setAlias('@common', dirname(__DIR__, 2) . '/common');
 Yii::setAlias('@api', dirname(__DIR__, 2) . '/api');
+Yii::setAlias('@jobs', dirname(dirname(__DIR__)) . '/backend/jobs');
 Yii::setAlias('@frontend', dirname(__DIR__, 2) . '/frontend');
 Yii::setAlias('@backend', dirname(__DIR__, 2) . '/backend');
 Yii::setAlias('@console', dirname(__DIR__, 2) . '/console');

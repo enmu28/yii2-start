@@ -24,7 +24,6 @@ class TblStyleNo extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'id_container' => 'ID container',
             'style_no' => 'Style',
             'uom' => 'Uom',
@@ -51,20 +50,21 @@ class TblStyleNo extends ActiveRecord
         ];
     }
 
-    public function rules(): array
-    {
-        return [
-            [
-                ['style_no', 'uom', 'prefix', 'sufix', 'height', 'width', 'length', 'upc', 'size_1', 'color_1', 'carton'], 'required',
-                'message' => '{attribute} not value ',
-            ],
-            [
-                ['style_no', 'uom', 'prefix', 'sufix', 'height', 'width', 'length', 'upc', 'size_1', 'color_1', 'carton'], 'integer',
-                'message' => '{attribute} not integer ',
-            ],
-            [
-                ['style_no'], 'unique', 'message'=>'{attribute}:{value} already exists!',
-            ],
-        ];
-    }
+//    public function rules(): array
+//    {
+//        return [
+//            [
+//                ['style_no', 'uom', 'prefix', 'sufix', 'height', 'width', 'length', 'upc', 'size_1', 'color_1', 'carton'], 'required',
+//                'message' => '{attribute} not value ',
+//            ],
+//            [
+//                ['style_no', 'uom', 'prefix', 'sufix', 'height', 'width', 'length', 'upc', 'size_1', 'color_1', 'carton'], 'integer',
+//                'message' => '{attribute} not integer ',
+//            ],
+//            [
+//                ['style_no'], 'unique', 'message'=>'{attribute}:{value} already exists!',
+//            ],
+//            ['style_no', 'each', 'rule' => ['required']]
+//        ];
+//    }
 }

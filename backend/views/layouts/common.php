@@ -206,7 +206,7 @@ $logEntries[] = [
                         [
                             'label' => Yii::t('backend', 'Example'),
                             'icon' => FAS::icon('stream', ['class' => ['nav-icon']]),
-                            'url' => ['/example/index'],
+                            'url' => ['/form/index'],
                         ],
                         [
                             'label' => Yii::t('backend', 'Main'),

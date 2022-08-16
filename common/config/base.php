@@ -5,7 +5,7 @@ $config = [
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'sourceLanguage' => 'en-US',
     'language' => 'en-US',
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'queue'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -78,7 +78,15 @@ $config = [
             'enableSchemaCache' => true,
             'schemaCacheDuration' => 3600,
             'schemaCache' => 'cache',
-        ] ,
+        ],
+
+        'queue' => [
+            'class' => \yii\queue\db\Queue::class,
+            'db' => 'db', // DB connection component or its config
+            'tableName' => '{{%queue}}', // Table name
+            'channel' => 'default', // Queue channel key
+            'mutex' => \yii\mutex\MysqlMutex::class, // Mutex used to sync queries
+        ],
 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

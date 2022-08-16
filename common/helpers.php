@@ -30,6 +30,22 @@ function render($view, $params = [])
     return Yii::$app->controller->render($view, $params);
 }
 
+
+/**
+ * @return $app
+ */
+function z(){
+    return Yii::$app;
+}
+
+/**
+ * @return \yii\console\Request|\yii\web\Request
+ */
+function q(){
+    return Yii::$app->request;
+}
+
+
 /**
  * @param $url
  * @param int $statusCode

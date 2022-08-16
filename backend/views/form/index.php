@@ -32,7 +32,7 @@ use backend\assets\BackendAsset;
         </div>
         <div class="col-4 form-inline">
             <?= $form->field($container, "created_at")
-                ->input('datetime-local')->label('Date') ?>
+                ->input('date')->label('Date') ?>
         </div>
     </div>
 
@@ -288,4 +288,4 @@ use backend\assets\BackendAsset;
 ActiveForm::end();
 ?>
 
-    <br><a href="">Main Menu</a>
+    <br><?= Html::a('Main menu', ['form/show'], ['class' => 'profile-link']) ?>
