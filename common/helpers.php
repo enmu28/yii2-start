@@ -46,6 +46,16 @@ function q(){
 }
 
 
+function dataJson($success, $model, $message){
+    return ['data' =>
+        [
+            'success' => $success,
+            'model' => $model,
+            'message' => $message
+        ]
+    ];
+}
+
 /**
  * @param $url
  * @param int $statusCode

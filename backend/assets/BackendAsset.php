@@ -16,22 +16,25 @@ use rmrevin\yii\fontawesome\NpmFreeAssetBundle;
 
 class BackendAsset extends AssetBundle
 {
+
+    public $basePath = '@webroot';
     /**
      * @var string
      */
-    public $sourcePath = '@backend/web/bundle';
+    public $baseUrl = '@web';
 
     /**
      * @var array
      */
     public $css = [
-        'style.css'
+        'css/style.css'
     ];
     /**
      * @var array
      */
     public $js = [
-        'app.js'
+        'js/app.js',
+        'js/form.js',
     ];
 
     public $publishOptions = [

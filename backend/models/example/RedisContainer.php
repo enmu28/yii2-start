@@ -17,6 +17,18 @@ class RedisContainer extends ActiveRecord
         return $this->hasMany(RedisStyleNo::className(), ['id_container' => 'id']);
     }
 
+    public function rules()
+    {
+        return [
+            [
+                ['price'], 'required',
+                'message' => '{attribute} not value ',
+            ],
+            [['price'], 'integer'],
+            ['price', 'compare', 'compareValue' => 0, 'operator' => '>', 'message' => 'Price must be great than 0!'],
+        ];
+    }
+
 //    public function getVendor(){
 //        return $this->hasOne(TblVendor::className(), ['id' => 'ivendor']);
 //    }
