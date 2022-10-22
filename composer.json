@@ -59,13 +59,23 @@
     "rmrevin/yii2-fontawesome": "^3.4",
     "kartik-v/yii2-widgets": "^3.4",
     "yiisoft/yii2-redis": "~2.0.0",
-    "yiisoft/yii2-queue": "^2.3"
+    "yiisoft/yii2-queue": "^2.3",
+    "php-amqplib/php-amqplib": "^2.8",
+    "enqueue/fs": "^0.10.16",
+    "queue-interop/amqp-interop": "^0.8.2",
+    "enqueue/dsn": "0.10.x",
+    "enqueue/amqp-lib": "0.9.x",
+    "yiisoft/yii2-elasticsearch": "^2.1",
+    "elasticsearch/elasticsearch": "~7.0.1",
+    "bizley/jwt": "^2.0",
+    "firebase/php-jwt": "^6.3"
   },
   "require-dev": {
     "yiisoft/yii2-gii": "^2.0.0",
     "yiisoft/yii2-faker": "^2.0.0",
     "codeception/codeception": "2.4.0",
-    "codeception/verify": "^0.3.1"
+    "codeception/verify": "^0.3.1",
+    "enqueue/null": "0.10.x-dev"
   },
   "autoload-dev": {
     "psr-4": {

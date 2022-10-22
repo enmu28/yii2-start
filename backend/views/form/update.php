@@ -22,8 +22,8 @@ $form = ActiveForm::begin();
         Vendor : &emsp;
         <select name="redis_container_vendor" id="" class="form-control">
             <?php
-            if(count(TblVendor::find()->all()) >0){
-                foreach(TblVendor::find()->all() as $value){
+            if(!empty($tbl_vendor)){
+                foreach($tbl_vendor as $value){
                     if($redis_container->vendor == $value->id){
                         echo "<option value='$value->id' selected>$value->name</option>";
                     }else{
@@ -40,8 +40,8 @@ $form = ActiveForm::begin();
         Measurement System : &emsp;
         <select name="redis_container_system" id="" class="form-control">
         <?php
-        if(count(TblMeasurementSystem::find()->all()) >0){
-            foreach(TblMeasurementSystem::find()->all() as $value){
+        if(!empty($tbl_measurement_system)){
+            foreach($tbl_measurement_system as $value){
                 if($redis_container->measurement_system == $value->id){
                     echo "<option value='$value->id' selected>$value->name</option>";
                 }else{

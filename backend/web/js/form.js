@@ -132,82 +132,82 @@ return true;
 }
 
 function check_validate() {
-let k = 0;
-let count = 0;
-let style_no = {};
-style_no['style-no']={};style_no['uom'] = {};style_no['prefix']= {};style_no['sufix'] ={};
-style_no['height'] = {};style_no['width'] = {};style_no['length'] = {};style_no['weight'] ={};
-style_no['size_2'] = {};style_no['color_2'] = {};style_no['size_3'] = {};style_no['color_3'] ={};
-style_no['upc'] ={}; style_no['size_1'] ={}; style_no['color_1'] ={}; style_no['carton'] = {};
-if(check_val('id-container') != true && check_val('price') != true || check_val('id-container') != true || check_val('price') != true) {
-    k = 1;
-}else{
-    k =0;
-}
+    let k = 0;
+    let count = 0;
+    let style_no = {};
+    style_no['style-no']={};style_no['uom'] = {};style_no['prefix']= {};style_no['sufix'] ={};
+    style_no['height'] = {};style_no['width'] = {};style_no['length'] = {};style_no['weight'] ={};
+    style_no['size_2'] = {};style_no['color_2'] = {};style_no['size_3'] = {};style_no['color_3'] ={};
+    style_no['upc'] ={}; style_no['size_1'] ={}; style_no['color_1'] ={}; style_no['carton'] = {};
 
-for(let i=1; i<=$('.tr_name').length; i++){
-    if(check_val(String("style-no-"+i)) == false && check_val(String('uom-'+i)) == false && check_val(String('prefix-'+i)) == false && check_val(String('sufix-'+i)) == false
-        && check_val(String('height-'+i)) == false && check_val(String('width-'+i)) == false && check_val(String('length-'+i)) == false && check_val(String('weight-'+i)) == false
-        && check_val(String('upc-'+i)) == false && check_val(String('size_1-'+i)) == false && check_val(String('color_1-'+i)) == false  && check_val(String('carton-'+i)) == false
-        && check_val_1(String('size_2-'+i)) == false && check_val_1(String('color_2-'+i)) == false && check_val_1(String('size_3-'+i)) == false && check_val_1(String('color_3-'+i)) == false
+    for(let i=1; i<=$('.tr_name').length; i++){
+        if(check_val(String("style-no-"+i)) == false && check_val(String('uom-'+i)) == false && check_val(String('prefix-'+i)) == false && check_val(String('sufix-'+i)) == false
+            && check_val(String('height-'+i)) == false && check_val(String('width-'+i)) == false && check_val(String('length-'+i)) == false && check_val(String('weight-'+i)) == false
+            && check_val(String('upc-'+i)) == false && check_val(String('size_1-'+i)) == false && check_val(String('color_1-'+i)) == false  && check_val(String('carton-'+i)) == false
+            && check_val_1(String('size_2-'+i)) == false && check_val_1(String('color_2-'+i)) == false && check_val_1(String('size_3-'+i)) == false && check_val_1(String('color_3-'+i)) == false
 
-        || check_val(String("style-no-"+i)) == false || check_val(String('uom-'+i)) == false || check_val(String('prefix-'+i)) == false || check_val(String('sufix-'+i)) == false
-        || check_val(String('height-'+i)) == false || check_val(String('width-'+i)) == false || check_val(String('length-'+i)) == false || check_val(String('weight-'+i)) == false
-        || check_val(String('upc-'+i)) == false || check_val(String('size_1-'+i)) == false || check_val(String('color_1-'+i)) == false  || check_val(String('carton-'+i)) == false
-        || check_val_1(String('size_2-'+i)) == false || check_val_1(String('color_2-'+i)) == false || check_val_1(String('size_3-'+i)) == false || check_val_1(String('color_3-'+i)) == false)
-    {
-        k  = 1;
-    }else{
-        k = 0;
-        style_no['style-no'][i] = $("#style-no-"+i).val();
-        style_no['uom'][i] = $("#uom-"+i).val();
-        style_no['prefix'][i] = $("#prefix-"+i).val();
-        style_no['sufix'][i] = $("#sufix-"+i).val();
-        style_no['height'][i] = $("#height-"+i).val();
-        style_no['width'][i] = $("#width-"+i).val();
-        style_no['length'][i] = $("#length-"+i).val();
-        style_no['weight'][i] = $("#weight-"+i).val();
-        style_no['upc'][i] = $("#upc-"+i).val();
-        style_no['size_1'][i] = $("#size_1-"+i).val();
-        style_no['color_1'][i] = $("#color_1-"+i).val();
-        style_no['size_2'][i] = $("#size_2-"+i).val();
-        style_no['color_2'][i] = $("#color_2-"+i).val();
-        style_no['size_3'][i] = $("#size_3-"+i).val();
-        style_no['color_3'][i] = $("#color_3-"+i).val();
-        style_no['carton'][i] = $("#carton-"+i).val();
+            || check_val(String("style-no-"+i)) == false || check_val(String('uom-'+i)) == false || check_val(String('prefix-'+i)) == false || check_val(String('sufix-'+i)) == false
+            || check_val(String('height-'+i)) == false || check_val(String('width-'+i)) == false || check_val(String('length-'+i)) == false || check_val(String('weight-'+i)) == false
+            || check_val(String('upc-'+i)) == false || check_val(String('size_1-'+i)) == false || check_val(String('color_1-'+i)) == false  || check_val(String('carton-'+i)) == false
+            || check_val_1(String('size_2-'+i)) == false || check_val_1(String('color_2-'+i)) == false || check_val_1(String('size_3-'+i)) == false || check_val_1(String('color_3-'+i)) == false)
+        {
+            k  = 1;
+        }else{
+            k = 0;
+            style_no['style-no'][i] = $("#style-no-"+i).val();
+            style_no['uom'][i] = $("#uom-"+i).val();
+            style_no['prefix'][i] = $("#prefix-"+i).val();
+            style_no['sufix'][i] = $("#sufix-"+i).val();
+            style_no['height'][i] = $("#height-"+i).val();
+            style_no['width'][i] = $("#width-"+i).val();
+            style_no['length'][i] = $("#length-"+i).val();
+            style_no['weight'][i] = $("#weight-"+i).val();
+            style_no['upc'][i] = $("#upc-"+i).val();
+            style_no['size_1'][i] = $("#size_1-"+i).val();
+            style_no['color_1'][i] = $("#color_1-"+i).val();
+            style_no['size_2'][i] = $("#size_2-"+i).val();
+            style_no['color_2'][i] = $("#color_2-"+i).val();
+            style_no['size_3'][i] = $("#size_3-"+i).val();
+            style_no['color_3'][i] = $("#color_3-"+i).val();
+            style_no['carton'][i] = $("#carton-"+i).val();
+        }
+
     }
-}
-//
-console.log(k);
-if(k == 1){
-    return false;
-}else{
-    let data = {};
-    if($("#id-vendor").val() != '' || $("#id-measurement-system").val() != ''){
-        data['id-vendor'] = $("#id-vendor").val();
-        data['id-measurement-system'] = $("#id-measurement-system").val();
-        data['id-container'] = $("#id-container").val();
-        data['price'] = $("#price").val();
-        data['created-at']  = $("#created-at").val();
-        data['style-no'] = style_no;
-        $.ajax({
-            url: '/form/validate',
-            method: 'post',
-            data : data,
-            dataType: 'json'
-        }).done(function(response){
-            if(response.data.success == true){
-                alert(response.data.message);
-            }else if(response.data.success == 'unique'){
-                $("#error-id-container").empty();
-                $("#error-id-container").append(response.data.message);
-            }else{
-                alert(response.data.message);
-            }
-        })
+    if(check_val('id-container') != true && check_val('price') != true || check_val('id-container') != true || check_val('price') != true) {
+        k = 1;
     }else{
-        alert("Error - Not data yet<br>Please contact the website!");
+        k =0;
     }
+    console.log(k);
+    if(k == 1){
+        return false;
+    }else{
+        let data = {};
+        if($("#id-vendor").val() != '' || $("#id-measurement-system").val() != ''){
+            data['id-vendor'] = $("#id-vendor").val();
+            data['id-measurement-system'] = $("#id-measurement-system").val();
+            data['id-container'] = $("#id-container").val();
+            data['price'] = $("#price").val();
+            data['created-at']  = $("#created-at").val();
+            data['style-no'] = style_no;
+            $.ajax({
+                url: '/form/validate',
+                method: 'post',
+                data : data,
+                dataType: 'json'
+            }).done(function(response){
+                if(response.data.success == true){
+                    alert(response.data.message);
+                }else if(response.data.success == 'unique'){
+                    $("#error-id-container").empty();
+                    $("#error-id-container").append(response.data.message);
+                }else{
+                    alert(response.data.message);
+                }
+            })
+        }else{
+            alert("Error - Not data yet<br>Please contact the website!");
+        }
 
-}
+    }
 }

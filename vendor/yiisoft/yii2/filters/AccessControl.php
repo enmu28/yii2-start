@@ -1,8 +1,8 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  */
 
 namespace yii\filters;
@@ -63,7 +63,7 @@ class AccessControl extends ActionFilter
      */
     public $user = 'user';
     /**
-     * @var callable a callback that will be called if the access should be denied
+     * @var callable|null a callback that will be called if the access should be denied
      * to the current user. This is the case when either no rule matches, or a rule with
      * [[AccessRule::$allow|$allow]] set to `false` matches.
      * If not set, [[denyAccess()]] will be called.
@@ -101,7 +101,9 @@ class AccessControl extends ActionFilter
         if ($this->user !== false) {
             $this->user = Instance::ensure($this->user, User::className());
         }
+
         foreach ($this->rules as $i => $rule) {
+//            var_dump($rule); exit();
             if (is_array($rule)) {
                 $this->rules[$i] = Yii::createObject(array_merge($this->ruleConfig, $rule));
             }

@@ -127,3 +127,10 @@ function getDataProviderSummary($dataProvider, $options = [])
         ]), $options);
     }
 }
+
+function isConsole()
+{
+    if (\Yii::$app instanceof \yii\console\Application)
+        return true;
+    return false;
+}

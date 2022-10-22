@@ -1,10 +1,15 @@
 <?php
+
+use yii\db\Connection;
+use yii\queue\amqp_interop\Queue;
+
 $config = [
     'name' => 'Yii2 Starter Kit',
     'vendorPath' => __DIR__ . '/../../vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'sourceLanguage' => 'en-US',
     'language' => 'en-US',
+//    'rbQueue'
     'bootstrap' => ['log', 'queue'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -66,6 +71,13 @@ $config = [
             'enableSchemaCache' => YII_ENV_PROD,
         ],
 
+        'redis'         => [
+            'class'    => 'yii\redis\Connection',
+            'hostname' => 'docker_redis',
+            'port'     => 6379,
+            'database' => 0,
+        ],
+
         'example' => [
             'class' => yii\db\Connection::class,
             'dsn' => env('DB_EXAM_DSN'),
@@ -80,13 +92,60 @@ $config = [
             'schemaCache' => 'cache',
         ],
 
-        'queue' => [
-            'class' => \yii\queue\db\Queue::class,
-            'db' => 'db', // DB connection component or its config
-            'tableName' => '{{%queue}}', // Table name
-            'channel' => 'default', // Queue channel key
-            'mutex' => \yii\mutex\MysqlMutex::class, // Mutex used to sync queries
+        'db_api' => [
+            'class' => yii\db\Connection::class,
+            'dsn' => env('DB_API_DSN'),
+            'username' => env('DB_API_USERNAME'),
+            'password' => env('DB_API_PASSWORD'),
+            'tablePrefix' => env('DB_API_TABLE_PREFIX'),
+            'charset' => env('DB_CHARSET', 'utf8'),
+
+            // Schema caching
+            'enableSchemaCache' => true,
+            'schemaCacheDuration' => 3600,
+            'schemaCache' => 'cache',
         ],
+
+//        'queue' => [
+//            'class' => \yii\queue\db\Queue::class,
+//            'db' => 'example', // DB connection component or its config
+//            'tableName' => '{{%queue}}', // Table name
+//            'channel' => 'default', // Queue channel key
+//            'mutex' => \yii\mutex\MysqlMutex::class, // Mutex used to sync queries
+//        ],
+
+        'queue' => [
+            'class' => \yii\queue\amqp_interop\Queue::class,
+            'port' => 5672,
+            'user' => 'guest',
+            'password' => 'guest',
+            'queueName' => 'queue',
+            'driver' => Queue::ENQUEUE_AMQP_LIB,
+
+//            // or
+            'dsn' => 'amqp://guest:guest@localhost:5672',
+//
+//            // or, same as above
+//            'dsn' => 'amqp:',
+        ],
+
+//        'rbQueue' => [
+//            'class' => 'yii\queue\amqp_interop\Queue',
+////            'host' => 'docker_rabbitmq',
+//            'port' => 5672,
+//            'user' => 'guest',
+//            'password' => 'guest',
+//            'vhost' => 'ahihi_rb',
+//            'queueName' => 'ahihi_rb',
+//            'as log' => 'yii\queue\LogBehavior',
+//            'strictJobType' => false,
+//            'serializer' => 'yii\queue\serializers\JsonSerializer',
+//            'driver' => Queue::ENQUEUE_AMQP_LIB,
+//            //'ttr' => 5 * 60, // Max time for anything job handling
+//            'ttr' => 1,
+//            'attempts' => 3, // Max number of attempts
+//            'maxPriority' => 0
+//        ],
 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -169,10 +228,6 @@ $config = [
             require(Yii::getAlias('@storage/config/_urlManager.php'))
         ),
 
-        'queue' => [
-            'class' => \yii\queue\file\Queue::class,
-            'path' => '@common/runtime/queue',
-        ],
     ],
     'params' => [
         'adminEmail' => env('ADMIN_EMAIL'),

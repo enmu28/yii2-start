@@ -217,7 +217,7 @@ export namespace Ace {
     wrapBehavioursEnabled: boolean;
     enableAutoIndent: boolean;
     autoScrollEditorIntoView: boolean;
-    keyboardHandler: string;
+    keyboardHandler: string | null;
     placeholder: string;
     value: string;
     session: EditSession;
@@ -231,7 +231,7 @@ export namespace Ace {
     skipCurrent: boolean;
     range: Range;
     preserveCase: boolean;
-    regExp: RegExp;
+    regExp: boolean;
     wholeWord: boolean;
     caseSensitive: boolean;
     wrap: boolean;
@@ -246,6 +246,7 @@ export namespace Ace {
     off(name: string, callback: Function): void;
     removeListener(name: string, callback: Function): void;
     removeEventListener(name: string, callback: Function): void;
+    removeAllListeners(name?: string): void;
   }
 
   export interface Point {
@@ -281,7 +282,7 @@ export namespace Ace {
   }
 
   export interface MarkerLike {
-    range: Range;
+    range?: Range;
     type: string;
     renderer?: MarkerRenderer;
     clazz: string;

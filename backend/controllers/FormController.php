@@ -11,7 +11,11 @@ namespace backend\controllers;
 use app\models\example\RedisContainer;
 use app\models\example\RedisStyleNo;
 use app\models\example\TblContainer;
+use app\models\example\TblMeasurementSystem;
 use app\models\example\TblStyleNo;
+use app\models\example\TblVendor;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
@@ -22,7 +26,9 @@ class FormController extends Controller
     public function actionIndex()
     {
 //        $container = new TblContainer();
-        return $this->render('index');
+        $tbl_vendor = TblVendor::find()->all();
+        $tbl_measurement_system = TblMeasurementSystem::find()->all();
+        return $this->render('index', ['tbl_vendor' => $tbl_vendor, 'tbl_measurement_system' => $tbl_measurement_system]);
     }
 
     public function actionShow(){
@@ -36,8 +42,6 @@ class FormController extends Controller
                 'pageSize' => 1,
             ],
         ]);
-//        var_dump($dataProvider->totalCount); exit();
-//if ($dataProvider->totalCount > 0) {;
         return $this->render('show', [
             'dataProvider' => $dataProvider,
         ]);
@@ -51,12 +55,18 @@ class FormController extends Controller
     }
 
     public function actionUpdate(){
+        $tbl_vendor = TblVendor::find()->all();
+        $tbl_measurement_system = TblMeasurementSystem::find()->all();
+
         $request = Yii::$app->request;
         $redis_container = RedisContainer::find()->where(['id' => $request->get('id')])->with('styleno')->one();
         $redis_style_no = new RedisStyleNo();
 
         $request_redis = Yii::$app->request->post();
+
         if(!empty($request_redis)){
+
+
             $container = TblContainer::find()->where(['id'=>$request->get('id')])->one();
             $container->id_vendor = $request_redis['redis_container_vendor'];
             $container->id_measurement_system = $request_redis['redis_container_system'];
@@ -127,10 +137,13 @@ class FormController extends Controller
             $redis_container = RedisContainer::find()->where(['id' => $request->get('id')])->with('styleno')->one();
 
         }
-        return render('update', ['redis_container'=> $redis_container, 'redis_style_no' => $redis_style_no]);
+        return render('update', [
+            'redis_container'=> $redis_container,
+            'redis_style_no' => $redis_style_no,
+            'tbl_vendor' => $tbl_vendor,
+            'tbl_measurement_system' => $tbl_measurement_system
+        ]);
     }
-
-
 
     public function actionDelete(){
         $request = Yii::$app->request;
@@ -144,30 +157,60 @@ class FormController extends Controller
 
     public function actionValidate()
     {
+        $data = [];
         if (Yii::$app->request->isAjax){
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             $container = TblContainer::findOne(Yii::$app->request->post()['id-container']);
+
+            $data_queue = [];
             if(!$container){
+
+                $data_queue['id'] = Yii::$app->request->post()['id-container'];
+                $data_queue['id_vendor'] = Yii::$app->request->post()['id-vendor'];
+                $data_queue['id_measurement_system'] = Yii::$app->request->post()['id-measurement-system'];
+                $data_queue['price'] = Yii::$app->request->post()['price'];
+                $data_queue['created_at'] = Yii::$app->request->post()['created-at'];
+                $data_queue['style_no'] = [];
+
                 $container = new TblContainer();
-                $container->id = Yii::$app->request->post()['id-container'];
+                $container->id = Yii::$app->request ->post()['id-container'];
                 $container->id_vendor = Yii::$app->request->post()['id-vendor'];
                 $container->id_measurement_system = Yii::$app->request->post()['id-measurement-system'];
                 $container->price = Yii::$app->request->post()['price'];
                 $container->created_at = Yii::$app->request->post()['created-at'];
                 $container->save();
 
-                $redis_container = new RedisContainer();
-                $redis_container->id = $container->id;
-                $redis_container->vendor = $container->id_vendor;
-                $redis_container->measurement_system = $container->id_measurement_system;
-                $redis_container->price = $container->price;
-                $redis_container->created_at = $container->created_at;
-                $redis_container->save();
+//                $redis_container = new RedisContainer();
+//                $redis_container->id = $container->id;
+//                $redis_container->vendor = $container->id_vendor;
+//                $redis_container->measurement_system = $container->id_measurement_system;
+//                $redis_container->price = $container->price;
+//                $redis_container->created_at = $container->created_at;
+//                $redis_container->save();
 
                 $check_count = 0;
                 $count = count(Yii::$app->request->post()['style-no']['style-no']);
-                if($container->save() && $redis_container->save()){
+                if($container->save()){
                     for($i= 1; $i<=$count; $i++){
+                        $data_queue['style_no'][$i] = [
+                            'style_no' =>  Yii::$app->request->post()['style-no']['style-no'][$i],
+                            'uom' => Yii::$app->request->post()['style-no']['uom'][$i],
+                            'prefix' => Yii::$app->request->post()['style-no']['prefix'][$i],
+                            'sufix' => Yii::$app->request->post()['style-no']['sufix'][$i],
+                            'height' => Yii::$app->request->post()['style-no']['height'][$i],
+                            'width' => Yii::$app->request->post()['style-no']['width'][$i],
+                            'length' => Yii::$app->request->post()['style-no']['length'][$i],
+                            'weight' => Yii::$app->request->post()['style-no']['weight'][$i],
+                            'upc' => Yii::$app->request->post()['style-no']['upc'][$i],
+                            'size_1' => Yii::$app->request->post()['style-no']['size_1'][$i],
+                            'color_1' => Yii::$app->request->post()['style-no']['color_1'][$i],
+                            'size_2' => Yii::$app->request->post()['style-no']['size_2'][$i],
+                            'color_2' => Yii::$app->request->post()['style-no']['color_2'][$i],
+                            'size_3' => Yii::$app->request->post()['style-no']['size_3'][$i],
+                            'color_3' => Yii::$app->request->post()['style-no']['color_3'][$i],
+                            'carton' => Yii::$app->request->post()['style-no']['carton'][$i]
+                        ];
+
                         $style_no = new TblStyleNo();
                         $style_no->id_container = $container->id;
                         $style_no->style_no = Yii::$app->request->post()['style-no']['style-no'][$i];
@@ -189,39 +232,50 @@ class FormController extends Controller
                         $style_no->save();
 
 
-                        $redis_style_no = new RedisStyleNo();
-                        $redis_style_no->id = $style_no->id;
-                        $redis_style_no->id_container = $style_no->id_container;
-                        $redis_style_no->style_no = $style_no->style_no;
-                        $redis_style_no->uom = $style_no->uom;
-                        $redis_style_no->prefix = $style_no->prefix;
-                        $redis_style_no->sufix = $style_no->sufix;
-                        $redis_style_no->height = $style_no->height;
-                        $redis_style_no->width = $style_no->width;
-                        $redis_style_no->length = $style_no->length;
-                        $redis_style_no->weight = $style_no->weight;
-                        $redis_style_no->upc = $style_no->upc;
-                        $redis_style_no->size_1 = $style_no->size_1;
-                        $redis_style_no->color_1 = $style_no->color_1;
-                        $redis_style_no->size_2 = $style_no->size_2;
-                        $redis_style_no->color_2 = $style_no->color_2;
-                        $redis_style_no->size_3 = $style_no->size_3;
-                        $redis_style_no->color_3 = $style_no->color_3;
-                        $redis_style_no->carton = $style_no->carton;
-                        $redis_style_no->save();
+//                        $redis_style_no = new RedisStyleNo();
+//                        $redis_style_no->id = $style_no->id;
+//                        $redis_style_no->id_container = $style_no->id_container;
+//                        $redis_style_no->style_no = $style_no->style_no;
+//                        $redis_style_no->uom = $style_no->uom;
+//                        $redis_style_no->prefix = $style_no->prefix;
+//                        $redis_style_no->sufix = $style_no->sufix;
+//                        $redis_style_no->height = $style_no->height;
+//                        $redis_style_no->width = $style_no->width;
+//                        $redis_style_no->length = $style_no->length;
+//                        $redis_style_no->weight = $style_no->weight;
+//                        $redis_style_no->upc = $style_no->upc;
+//                        $redis_style_no->size_1 = $style_no->size_1;
+//                        $redis_style_no->color_1 = $style_no->color_1;
+//                        $redis_style_no->size_2 = $style_no->size_2;
+//                        $redis_style_no->color_2 = $style_no->color_2;
+//                        $redis_style_no->size_3 = $style_no->size_3;
+//                        $redis_style_no->color_3 = $style_no->color_3;
+//                        $redis_style_no->carton = $style_no->carton;
+//                        $redis_style_no->save();
 
-                        if($style_no->save() && $redis_style_no->save()){
+                        if($style_no->save()){
                             $check_count += 1;
                         }
                     }
                 }
                 if($check_count == $count){
-                    return  dataJson(true, null, 'Insert value success!');
-                }else{
-                    TblContainer::deleteAll(['id' => Yii::$app->request->post()['id-container']]);
-                    RedisContainer::deleteAll(['id' => Yii::$app->request->post()['id-container']]);
-                    RedisStyleNo::deleteAll(['id_container'=> Yii::$app->request->post()['id-container']]);
-                    return  dataJson(false, null, 'Insert value error!');
+//                    var_dump($data_queue); exit();
+
+                    $data_queue = json_encode($data_queue);
+                    $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
+                    $channel = $connection->channel();
+                    $channel->queue_declare('nguyen_redis', false, false, false, false);
+
+                    $msg = new AMQPMessage(
+                        $data_queue,
+                        array('delivery_mode' => 2)
+                    );
+
+                    $channel->basic_publish($msg, '', 'nguyen_redis');
+                    $channel->close();
+                    $connection->close();
+
+                    return  dataJson(true, null, 'Has sent to queue!');
                 }
 
             }else{
@@ -242,4 +296,35 @@ class FormController extends Controller
 
         return redirect("/form/update?id=$id_container");
     }
+
+//    public function actionRevice($queue_name){
+//        $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
+//        $channel = $connection->channel();
+//
+//        $channel->queue_declare($queue_name, false, false, false, false);
+//
+//        $callback = function ($msg) {
+//            echo ' [x] Received ', $msg->body, "\n";
+//        };
+//        $channel->basic_consume($queue_name, '', false, false, false, false, $callback);
+////
+////       while ($channel->is_open()) {
+////           $channel->wait();
+////       }
+//
+//        $channel->close();
+//        $connection->close();
+//
+//    }
+
+    public function actionAbc(){
+        $a = [];
+        $a['id'] = 1;
+        $a['style_no'] = [];
+        $a['style_no'][1] = 2;
+        $a['style_no'][2] = 3;
+        $a = json_encode($a);
+        var_dump($a); exit();
+    }
+
 }

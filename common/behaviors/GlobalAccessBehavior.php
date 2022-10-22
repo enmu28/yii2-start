@@ -18,7 +18,57 @@ class GlobalAccessBehavior extends Behavior
      * @var array
      * @see \yii\filters\AccessControl::rules
      */
-    public $rules = [];
+    public $rules = [
+//        [
+//            'controllers' => ['sign-in'],
+//            'allow' => true,
+//            'roles' => ['?'],
+//            'actions' => ['login'],
+//        ],
+//        [
+//            'controllers' => ['sign-in'],
+//            'allow' => true,
+//            'roles' => ['@'],
+//            'actions' => ['logout'],
+//        ],
+//        [
+//            'controllers' => ['site'],
+//            'allow' => true,
+//            'roles' => ['?', '@'],
+//            'actions' => ['error'],
+//        ],
+//        [
+//            'controllers' => ['debug/default'],
+//            'allow' => true,
+//            'roles' => ['?'],
+//        ],
+//        [
+//            'controllers' => ['user'],
+//            'allow' => true,
+//            'roles' => ['administrator', 'manager-occho'],
+//        ],
+//        [
+//            'controllers' => ['user'],
+//            'allow' => false,
+//        ],
+//        [
+//            'controllers' => ['hello_rbac/occho'],
+//            'allow' => true,
+//            'roles' => ['administrator', 'manager-occho'],
+//        ],
+//        [
+//            'controllers' => ['hello_rbac/occho'],
+//            'allow' => false,
+//        ],
+        [
+            'allow' => true,
+            'roles' => ['?', '@'],
+        ],
+//        [
+//            'allow' => true,
+//            'roles' => ['manager', 'administrator', 'manager-occho'],
+//        ],
+    ];
 
     /**
      * @var string

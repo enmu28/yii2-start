@@ -37,14 +37,14 @@ class BackendAsset extends AssetBundle
         'js/form.js',
     ];
 
-    public $publishOptions = [
-        'only' => [
-            '*.css',
-            '*.js',
-            '../img/*'
-        ],
-        "forceCopy" => YII_ENV_DEV,
-    ];
+//    public $publishOptions = [
+//        'only' => [
+//            '*.css',
+//            '*.js',
+//            '../img/*'
+//        ],
+//        "forceCopy" => YII_ENV_DEV,
+//    ];
 
     /**
      * @var array

@@ -1,22 +1,30 @@
 <?php
 namespace backend\jobs;
 
-use app\models\example\Post;
 use yii\base\BaseObject;
+use yii;
 use yii\queue\JobInterface;
+use yii\queue\RetryableJobInterface;
 
 class JobExample extends BaseObject implements JobInterface{
-    public $title;
-    public $content;
+    public $ahihi = 'Ahihi đồ ngốc!';
 
     public function execute($queue)
     {
-        for($i=1; $i<=100; $i++){
+        $k = 0;
+        for($i=1; $i<=5; $i++){
             echo $i.'insert'.PHP_EOL;
-            $post = new Post();
-            $post->title = 'abc';
-            $post->content = 'abc';
-            $post->save();
+            $result = Yii::$app->example->createCommand()->insert('ex_post',[
+                'title' => $i,
+                'content' => $i
+            ])->execute();
+            if($result){
+                $k++;
+            }
+            echo 'Nguyen Hoan VI';
+        }
+        if($k == 5){
+            echo $this->ahihi;
         }
     }
 }

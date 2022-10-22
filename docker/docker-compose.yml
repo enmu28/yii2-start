@@ -10,9 +10,8 @@ services:
             - ..:/var/www/html
             - ./nginx/conf.d:/etc/nginx/conf.d
             - ./nginx/log:/var/log/nginx
-        depends_on:
-            - docker_php
         network_mode: "network_customize"
+
 
     docker_php:
         build: ./php/php-fpm
@@ -21,25 +20,25 @@ services:
         volumes:
             - ..:/var/www/html
             - ./php/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+            - /home/vinef/.ssh:/root/.ssh
+            - ./php/supervisor/conf.d:/etc/supervisor/conf.d
+            - ./php/supervisor/logs:/var/log/cache
         ports:
             - "9000:9000"
-        depends_on:
-            - docker_redis
-
         network_mode: "network_customize"
+
 
     docker_mysql:
         image: mysql:5.7.22
         container_name: docker_mysql
         ports:
-            - "3307:3306"
+            - "3306:3306"
         volumes:
             - ./mysql/data:/var/lib/mysql
             - ./mysql/log:/var/log/mysql
         environment:
             MYSQL_ROOT_PASSWORD: zyz123
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
-
         network_mode: "network_customize"
 
     docker_redis:
@@ -49,6 +48,19 @@ services:
             - ./redis/data:/data
         ports:
             - "6379:6379"
+        network_mode: "network_customize"
+
+    docker_rabbitmq:
+        image: viktor68/queue:1.0
+        container_name: docker_rabbitmq
+        volumes:
+            - /docker/rabbitmq/logs:/var/log/rabbitmq/log
+        environment:
+            RABBITMQ_DEFAULT_USER: guest
+            RABBITMQ_DEFAULT_PASS: guest
+        ports:
+            - "15672:15672"
+            - "5672:5672"
         network_mode: "network_customize"
 
 
@@ -64,6 +76,28 @@ services:
         ports:
             - '8080:80'
         network_mode: "network_customize"
+
+    docker_elasticsearch:
+        build: ./elastic7
+        container_name: docker_elasticsearch
+        volumes:
+            - ./elastic7/log:/var/log/elasticsearch7
+            - ./elastic7/data:/usr/share/elasticsearch7/data
+        ports:
+            - 9200:9200
+            - 9300:9300
+        environment:
+            - discovery.type=single-node
+        network_mode: "network_customize"
+
+#    kibana:
+#        image: kibana:7.0.1
+#        container_name: docker_kibana
+#        ports:
+#            - 5601:5601
+#        environment:
+#            ELASTICSEARCH_HOSTS: http://docker_elasticsearch:9200
+#        network_mode: "network_customize"
 
 networks:
     network_customize:

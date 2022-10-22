@@ -22,8 +22,8 @@ use backend\assets\BackendAsset;
             <label>Vendor</label>
             <select class="form-control" id="id-vendor">
                 <?php
-                if(count(TblVendor::find()->all()) >0){
-                    foreach(TblVendor::find()->all() as $value){
+                if(!empty($tbl_vendor)){
+                    foreach($tbl_vendor as $value){
                         echo "<option value='$value->id'>$value->name </option>";
                     }
                 }else{
@@ -36,8 +36,8 @@ use backend\assets\BackendAsset;
             <label>Vendor</label>
             <select class="form-control" id="id-measurement-system">
                 <?php
-                if(count(TblMeasurementSystem::find()->all()) >0){
-                    foreach(TblMeasurementSystem::find()->all() as $value){
+                if(!empty($tbl_measurement_system)){
+                    foreach($tbl_measurement_system as $value){
                         echo "<option value='$value->id'>$value->name </option>";
                     }
                 }else{

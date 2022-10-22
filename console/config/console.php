@@ -28,6 +28,9 @@ return [
             'migrationPath' => [
                 '@common/migrations/example',
             ],
-        ]
+        ],
+//        'rb-queue-vinef' => [
+//            'class' => console\controllers\RbQueueController::class,
+//        ]
     ],
 ];

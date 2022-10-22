@@ -16,6 +16,7 @@ Yii::setAlias('@backend', dirname(__DIR__, 2) . '/backend');
 Yii::setAlias('@console', dirname(__DIR__, 2) . '/console');
 Yii::setAlias('@storage', dirname(__DIR__, 2) . '/storage');
 Yii::setAlias('@tests', dirname(__DIR__, 2) . '/tests');
+Yii::setAlias('@uploads', dirname(__DIR__, 2) . '/uploads');
 
 /**
  * Setting url aliases
