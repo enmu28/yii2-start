@@ -9,8 +9,8 @@
  * -----
  */
 
- use yii\helpers\ArrayHelper;
- use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /**
  * @return int|string
@@ -47,6 +47,7 @@ function q(){
 
 
 function dataJson($success, $model, $message){
+    Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
     return ['data' =>
         [
             'success' => $success,
@@ -107,13 +108,13 @@ function getDataProviderSummary($dataProvider, $options = [])
         $page = $pagination->getPage() + 1;
         $pageCount = $pagination->pageCount;
         return Html::tag($tag, Yii::t('yii', 'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{item} other{items}}.', [
-                'begin' => $begin,
-                'end' => $end,
-                'count' => $count,
-                'totalCount' => $totalCount,
-                'page' => $page,
-                'pageCount' => $pageCount,
-            ]), $options);
+            'begin' => $begin,
+            'end' => $end,
+            'count' => $count,
+            'totalCount' => $totalCount,
+            'page' => $page,
+            'pageCount' => $pageCount,
+        ]), $options);
     } else {
         $begin = $page = $pageCount = 1;
         $end = $totalCount = $count;
@@ -133,4 +134,14 @@ function isConsole()
     if (\Yii::$app instanceof \yii\console\Application)
         return true;
     return false;
+}
+
+function Json($status, $message, $data, $http)
+{
+    return [
+        'status' => $status,
+        'message' => $message,
+        'data' => $data['data'],
+        'https' => $http
+    ];
 }

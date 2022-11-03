@@ -1,10 +1,4 @@
 <?php
-/**
- * @author quocdaijr
- * @time 09/03/2020
- * @package backend\modules\content\helpers
- * @version 1.0
- */
 
 namespace backend\modules\hello\helpers;
 

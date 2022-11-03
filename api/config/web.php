@@ -6,7 +6,7 @@ $config = [
     'bootstrap' => ['maintenance'],
     'modules' => [
         'v1' => \api\modules\v1\Module::class,
-        'example' => \api\modules\example\Module::class,
+        'cms' => \api\modules\cms\Module::class,
     ],
     'components' => [
         'errorHandler' => [
@@ -23,7 +23,7 @@ $config = [
         ],
         'user' => [
             'class' => yii\web\User::class,
-            'identityClass' => 'api/modules/example/models/vendor',
+            'identityClass' => 'api/modules/cms/models/vendor',
             'loginUrl' => ['/user/sign-in/login'],
             'enableAutoLogin' => true,
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class
@@ -37,25 +37,35 @@ $config = [
             ],
         ],
 
-        'urlManager' => [
-            'class' => 'yii\web\UrlManager',
-            // bỏ index
-            'enablePrettyUrl' => true,
-            // bỏ ?r =
-            'showScriptName' => false,
-            'rules' => [
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'example\vendor',
-                    'pluralize' => false,
-                    'extraPatterns' => [
-                        'POST get-id' => 'example\vendor\get-id',
-//                        'GET '
-                    ],
-                ],
-            ],
-
-        ],
+//        'urlManager' => [
+//            'class' => 'yii\web\UrlManager',
+//            // bỏ index
+//            'enablePrettyUrl' => true,
+//            // bỏ ?r =
+//            'showScriptName' => false,
+//            'rules' => [
+////                [
+////                    'class' => 'yii\rest\UrlRule',
+////                    'controller' => 'example\vendor',
+////                    'pluralize' => false,
+////                    'extraPatterns' => [
+////                        'POST get-id' => 'example\vendor\get-id',
+////                        'GET '
+////                    ],
+////                ],
+//
+////                [
+////                    'class' => 'yii\rest\UrlRule',
+////                    'controller' => 'cms\user',
+////                    'pluralize' => false,
+////                    'extraPatterns' => [
+//////                        'POST get-id' => 'example\vendor\get-id',
+////                        'GET find-all-slug' => 'cms\user\find-all-slug'
+////                    ],
+////                ],
+//            ],
+//
+//        ],
         'jwt' => [
             'class' => 'bizley\jwt\Jwt',
             'key' => 'secret' // Secret key string or path to the public key file

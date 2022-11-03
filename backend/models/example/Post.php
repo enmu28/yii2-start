@@ -2,12 +2,10 @@
 namespace app\models\example;
 
 use yii\db\ActiveRecord;
-
 use yii;
 
 class Post extends ActiveRecord
 {
-
     public static function getDb()
     {
         return Yii::$app->example;
@@ -17,13 +15,10 @@ class Post extends ActiveRecord
     {
         return '{{%post}}';
     }
-
     public function attributes()
     {
         return[
             'id', 'title', 'content'
         ];
     }
-
-
 }

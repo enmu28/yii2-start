@@ -1,0 +1,7 @@
+172.20.0.1 - - [03/Nov/2022:02:34:43 +0000] "GET / HTTP/1.1" 302 5 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.20.0.1 - - [03/Nov/2022:02:34:43 +0000] "GET /site/docs HTTP/1.1" 500 118514 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.20.0.1 - - [03/Nov/2022:02:34:50 +0000] "GET /debug/default/toolbar?tag=636328c3ae095 HTTP/1.1" 500 86 "http://api_fe.yii2.local/site/docs" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.20.0.1 - - [03/Nov/2022:02:34:50 +0000] "GET /favicon.ico HTTP/1.1" 500 47 "http://api_fe.yii2.local/site/docs" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.20.0.1 - - [03/Nov/2022:02:37:51 +0000] "GET /site/docs HTTP/1.1" 500 118505 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.20.0.1 - - [03/Nov/2022:02:37:57 +0000] "GET /debug/default/toolbar?tag=6363297f247af HTTP/1.1" 500 86 "http://api_fe.yii2.local/site/docs" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+172.20.0.1 - - [03/Nov/2022:02:37:57 +0000] "GET /favicon.ico HTTP/1.1" 500 47 "http://api_fe.yii2.local/site/docs" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"

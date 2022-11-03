@@ -101,9 +101,7 @@ class AccessControl extends ActionFilter
         if ($this->user !== false) {
             $this->user = Instance::ensure($this->user, User::className());
         }
-
         foreach ($this->rules as $i => $rule) {
-//            var_dump($rule); exit();
             if (is_array($rule)) {
                 $this->rules[$i] = Yii::createObject(array_merge($this->ruleConfig, $rule));
             }

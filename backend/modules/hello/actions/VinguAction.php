@@ -1,10 +1,4 @@
 <?php
-/**
- * @author quocdaijr
- * @time 12/06/2020
- * @package backend\modules\content\modules\image\actions
- * @version 1.0
- */
 
 namespace backend\modules\hello\actions;
 

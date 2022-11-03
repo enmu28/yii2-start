@@ -8,7 +8,9 @@
 
 namespace backend\controllers;
 
+use app\models\example\Post;
 use app\models\example\RedisContainer;
+use app\models\example\RedisPost;
 use app\models\example\RedisStyleNo;
 use app\models\example\TblContainer;
 use app\models\example\TblMeasurementSystem;
@@ -42,6 +44,8 @@ class FormController extends Controller
                 'pageSize' => 1,
             ],
         ]);
+//        var_dump($dataProvider->totalCount); exit();
+//if ($dataProvider->totalCount > 0) {;
         return $this->render('show', [
             'dataProvider' => $dataProvider,
         ]);
@@ -173,13 +177,13 @@ class FormController extends Controller
                 $data_queue['style_no'] = [];
 
                 $container = new TblContainer();
-                $container->id = Yii::$app->request ->post()['id-container'];
+                $container->id = Yii::$app->request->post()['id-container'];
                 $container->id_vendor = Yii::$app->request->post()['id-vendor'];
                 $container->id_measurement_system = Yii::$app->request->post()['id-measurement-system'];
                 $container->price = Yii::$app->request->post()['price'];
                 $container->created_at = Yii::$app->request->post()['created-at'];
                 $container->save();
-
+//
 //                $redis_container = new RedisContainer();
 //                $redis_container->id = $container->id;
 //                $redis_container->vendor = $container->id_vendor;
@@ -190,7 +194,7 @@ class FormController extends Controller
 
                 $check_count = 0;
                 $count = count(Yii::$app->request->post()['style-no']['style-no']);
-                if($container->save()){
+//                if($container->save() && $redis_container->save()){
                     for($i= 1; $i<=$count; $i++){
                         $data_queue['style_no'][$i] = [
                             'style_no' =>  Yii::$app->request->post()['style-no']['style-no'][$i],
@@ -210,7 +214,7 @@ class FormController extends Controller
                             'color_3' => Yii::$app->request->post()['style-no']['color_3'][$i],
                             'carton' => Yii::$app->request->post()['style-no']['carton'][$i]
                         ];
-
+                        $check_count += 1;
                         $style_no = new TblStyleNo();
                         $style_no->id_container = $container->id;
                         $style_no->style_no = Yii::$app->request->post()['style-no']['style-no'][$i];
@@ -230,8 +234,8 @@ class FormController extends Controller
                         $style_no->color_3 = Yii::$app->request->post()['style-no']['color_3'][$i];
                         $style_no->carton = Yii::$app->request->post()['style-no']['carton'][$i];
                         $style_no->save();
-
-
+//
+//
 //                        $redis_style_no = new RedisStyleNo();
 //                        $redis_style_no->id = $style_no->id;
 //                        $redis_style_no->id_container = $style_no->id_container;
@@ -252,31 +256,37 @@ class FormController extends Controller
 //                        $redis_style_no->color_3 = $style_no->color_3;
 //                        $redis_style_no->carton = $style_no->carton;
 //                        $redis_style_no->save();
-
-                        if($style_no->save()){
-                            $check_count += 1;
-                        }
+//                        if($style_no->save() && $redis_style_no->save()){
+//                            $check_count += 1;
+//                        }
                     }
-                }
+//                }
+
                 if($check_count == $count){
 //                    var_dump($data_queue); exit();
 
                     $data_queue = json_encode($data_queue);
                     $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
                     $channel = $connection->channel();
-                    $channel->queue_declare('nguyen_redis', false, false, false, false);
+                    $channel->queue_declare('nguyen_igusez', false, false, false, false);
 
                     $msg = new AMQPMessage(
                         $data_queue,
                         array('delivery_mode' => 2)
                     );
 
-                    $channel->basic_publish($msg, '', 'nguyen_redis');
+                    $channel->basic_publish($msg, '', 'nguyen_igusez');
                     $channel->close();
                     $connection->close();
 
-                    return  dataJson(true, null, 'Has sent to queue!');
+                    return  dataJson(true, null, 'Has sent to queuee!');
                 }
+//                else{
+//                    TblContainer::deleteAll(['id' => Yii::$app->request->post()['id-container']]);
+//                    RedisContainer::deleteAll(['id' => Yii::$app->request->post()['id-container']]);
+//                    RedisStyleNo::deleteAll(['id_container'=> Yii::$app->request->post()['id-container']]);
+//                    return  dataJson(false, null, 'Insert value error!');
+//                }
 
             }else{
                 return  dataJson('unique', null, 'Unique id container!');
@@ -297,34 +307,50 @@ class FormController extends Controller
         return redirect("/form/update?id=$id_container");
     }
 
-//    public function actionRevice($queue_name){
-//        $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
-//        $channel = $connection->channel();
-//
-//        $channel->queue_declare($queue_name, false, false, false, false);
-//
-//        $callback = function ($msg) {
-//            echo ' [x] Received ', $msg->body, "\n";
-//        };
-//        $channel->basic_consume($queue_name, '', false, false, false, false, $callback);
-////
-////       while ($channel->is_open()) {
-////           $channel->wait();
-////       }
-//
-//        $channel->close();
-//        $connection->close();
-//
-//    }
+    public function actionRevice($queue_name){
+        $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
 
-    public function actionAbc(){
-        $a = [];
-        $a['id'] = 1;
-        $a['style_no'] = [];
-        $a['style_no'][1] = 2;
-        $a['style_no'][2] = 3;
-        $a = json_encode($a);
-        var_dump($a); exit();
+        $channel->queue_declare($queue_name, false, false, false, false);
+
+        $callback = function ($msg) {
+            echo ' [x] Received ', $msg->body, "\n";
+        };
+        $channel->basic_consume($queue_name, '', false, false, false, false, $callback);
+//
+//       while ($channel->is_open()) {
+//           $channel->wait();
+//       }
+
+        $channel->close();
+        $connection->close();
+
+    }
+
+    public function actionRedisPost(){
+        $post = new Post();
+        $post->title = 'abc';
+        $post->content = 'abc';
+        $post->save();
+
+        $data_queue = [];
+        $data_queue['id'] = $post->id;
+        $data_queue = json_encode($data_queue);
+        $connection = new AMQPStreamConnection('docker_rabbitmq', 5672, 'guest', 'guest');
+        $channel = $connection->channel();
+        $channel->queue_declare('nguyen_igusez', false, false, false, false);
+
+        $msg = new AMQPMessage(
+            $data_queue,
+            array('delivery_mode' => 2)
+        );
+
+        $channel->basic_publish($msg, '', 'nguyen_igusez');
+        $channel->close();
+        $connection->close();
+
+        return  dataJson(true, null, 'Has sent to eee!');
+
     }
 
 }

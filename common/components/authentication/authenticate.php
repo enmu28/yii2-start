@@ -34,12 +34,14 @@ class authenticate extends AuthMethod
         }catch (\Exception $e){
             if($e->getMessage() == 'Incorrect key for this algorithm'){
                 throw new HttpException(401, 'Incorrect key for this algorithm');
-            }elseif ($e->getMessage() == 'Signature verification failed'){
-                throw new HttpException(401, 'Signature verification failed');
-            }elseif ($e->getMessage() == 'expired .................'){
+            }
+//            elseif ($e->getMessage() == 'Signature verification failed'){
+//                throw new HttpException(401, 'Signature verification failed');
+//            }
+            elseif ($e->getMessage() == 'Expired token'){
                 throw new HttpException(401, 'Token expired');
             }else{
-                throw new HttpException(401, 'Token error');
+                throw new HttpException(401, 'Signature verification failed');
             }
         }
         if(!empty($decoded->pos_name)){
@@ -63,7 +65,6 @@ class authenticate extends AuthMethod
             ];
 
             $responsive = $elas->search($baseQuery);
-
 
             if(!empty($responsive['data'])){
                 return true;

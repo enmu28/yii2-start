@@ -1,13 +1,4 @@
 <?php
-/**
- * @author quocdaijr
- * @time 19/05/2020
- * @package common\components\elasticsearch
- * @version 1.0
- * Require Elasticsearch > 7.0
- * Abstract class has references from package
- * "kuroneko/yii2-elastic-search" (Code by Giang on site git.tuoitre.com.vn)
- */
 
 namespace common\components\elasticsearch;
 

@@ -70,3 +70,497 @@ Stack trace:
 #16 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
 #17 /var/www/html/console/yii(26): yii\base\Application->run()
 #18 {main}
+Exception 'PhpAmqpLib\Exception\AMQPRuntimeException' with message 'fwrite(): send of 12 bytes failed with errno=104 Connection reset by peer'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:301
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(349): PhpAmqpLib\Wire\IO\StreamIO->write('\x01\x00\x00\x00\x00\x00\x04\x00\n\x003\xCE')
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(470): PhpAmqpLib\Connection\AbstractConnection->write('\x01\x00\x00\x00\x00\x00\x04\x00\n\x003\xCE')
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(240): PhpAmqpLib\Connection\AbstractConnection->send_channel_method_frame(0, Array, '')
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(706): PhpAmqpLib\Channel\AbstractChannel->send_method_frame(Array)
+#4 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(695): PhpAmqpLib\Connection\AbstractConnection->x_close_ok()
+#5 [internal function]: PhpAmqpLib\Connection\AbstractConnection->connection_close(Object(PhpAmqpLib\Wire\AMQPReader))
+#6 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(209): call_user_func(Array, Object(PhpAmqpLib\Wire\AMQPReader))
+#7 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(351): PhpAmqpLib\Channel\AbstractChannel->dispatch('10,50', '\x01@KCONNECTION_F...', NULL)
+#8 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(622): PhpAmqpLib\Channel\AbstractChannel->wait()
+#9 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(227): PhpAmqpLib\Connection\AbstractConnection->wait_channel(1, 0)
+#10 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(338): PhpAmqpLib\Channel\AbstractChannel->next_frame(0)
+#11 /var/www/html/console/controllers/AppController.php(445): PhpAmqpLib\Channel\AbstractChannel->wait()
+#12 [internal function]: console\controllers\AppController->actionSetredis()
+#13 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#16 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#17 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#18 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#19 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#20 /var/www/html/console/yii(26): yii\base\Application->run()
+#21 {main}
+Exception 'PhpAmqpLib\Exception\AMQPRuntimeException' with message 'fwrite(): send of 12 bytes failed with errno=104 Connection reset by peer'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:301
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(349): PhpAmqpLib\Wire\IO\StreamIO->write('\x01\x00\x00\x00\x00\x00\x04\x00\n\x003\xCE')
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(470): PhpAmqpLib\Connection\AbstractConnection->write('\x01\x00\x00\x00\x00\x00\x04\x00\n\x003\xCE')
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(240): PhpAmqpLib\Connection\AbstractConnection->send_channel_method_frame(0, Array, '')
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(706): PhpAmqpLib\Channel\AbstractChannel->send_method_frame(Array)
+#4 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(695): PhpAmqpLib\Connection\AbstractConnection->x_close_ok()
+#5 [internal function]: PhpAmqpLib\Connection\AbstractConnection->connection_close(Object(PhpAmqpLib\Wire\AMQPReader))
+#6 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(209): call_user_func(Array, Object(PhpAmqpLib\Wire\AMQPReader))
+#7 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(351): PhpAmqpLib\Channel\AbstractChannel->dispatch('10,50', '\x01@KCONNECTION_F...', NULL)
+#8 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(622): PhpAmqpLib\Channel\AbstractChannel->wait()
+#9 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(227): PhpAmqpLib\Connection\AbstractConnection->wait_channel(1, 0)
+#10 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Channel/AbstractChannel.php(338): PhpAmqpLib\Channel\AbstractChannel->next_frame(0)
+#11 /var/www/html/console/controllers/AppController.php(447): PhpAmqpLib\Channel\AbstractChannel->wait()
+#12 [internal function]: console\controllers\AppController->actionSetredis()
+#13 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#15 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#16 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#17 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#18 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#19 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#20 /var/www/html/console/yii(26): yii\base\Application->run()
+#21 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (Connection refused)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}
+Exception 'ErrorException' with message 'stream_socket_client(): unable to connect to tcp://docker_rabbitmq:5672 (php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution)'
+
+in /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php:142
+
+Stack trace:
+#0 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Wire/IO/StreamIO.php(144): PhpAmqpLib\Wire\IO\StreamIO->cleanup_error_handler()
+#1 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(208): PhpAmqpLib\Wire\IO\StreamIO->connect()
+#2 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AbstractConnection.php(192): PhpAmqpLib\Connection\AbstractConnection->connect()
+#3 /var/www/html/vendor/php-amqplib/php-amqplib/PhpAmqpLib/Connection/AMQPStreamConnection.php(51): PhpAmqpLib\Connection\AbstractConnection->__construct('guest', 'guest', '/', false, 'AMQPLAIN', NULL, 'en_US', Object(PhpAmqpLib\Wire\IO\StreamIO), 0, 3)
+#4 /var/www/html/console/controllers/AppController.php(395): PhpAmqpLib\Connection\AMQPStreamConnection->__construct('docker_rabbitmq', 5672, 'guest', 'guest')
+#5 [internal function]: console\controllers\AppController->actionSetredis()
+#6 /var/www/html/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#7 /var/www/html/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#8 /var/www/html/vendor/yiisoft/yii2/console/Controller.php(180): yii\base\Controller->runAction('setredis', Array)
+#9 /var/www/html/vendor/yiisoft/yii2/base/Module.php(552): yii\console\Controller->runAction('setredis', Array)
+#10 /var/www/html/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('app/setredis', Array)
+#11 /var/www/html/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('app/setredis', Array)
+#12 /var/www/html/vendor/yiisoft/yii2/base/Application.php(384): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 /var/www/html/console/yii(26): yii\base\Application->run()
+#14 {main}

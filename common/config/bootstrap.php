@@ -17,14 +17,17 @@ Yii::setAlias('@console', dirname(__DIR__, 2) . '/console');
 Yii::setAlias('@storage', dirname(__DIR__, 2) . '/storage');
 Yii::setAlias('@tests', dirname(__DIR__, 2) . '/tests');
 Yii::setAlias('@uploads', dirname(__DIR__, 2) . '/uploads');
+Yii::setAlias('@api_fe', dirname(__DIR__, 2) . '/api_fe');
 
 /**
  * Setting url aliases
  */
 Yii::setAlias('@apiUrl', env('API_HOST_INFO') . env('API_BASE_URL'));
+Yii::setAlias('@api_feUrl', env('API_FE_HOST_INFO') . env('API_FE_BASE_URL'));
 Yii::setAlias('@frontendUrl', env('FRONTEND_HOST_INFO') . env('FRONTEND_BASE_URL'));
 Yii::setAlias('@backendUrl', env('BACKEND_HOST_INFO') . env('BACKEND_BASE_URL'));
 Yii::setAlias('@storageUrl', env('STORAGE_HOST_INFO') . env('STORAGE_BASE_URL'));
+
 
 
 

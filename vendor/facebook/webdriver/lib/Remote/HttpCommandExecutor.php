@@ -16,7 +16,6 @@
 namespace Facebook\WebDriver\Remote;
 
 use BadMethodCallException;
-use Facebook\WebDriver\Exception\WebDriverCurlException;
 use Facebook\WebDriver\Exception\WebDriverException;
 use Facebook\WebDriver\WebDriverCommandExecutor;
 use InvalidArgumentException;
@@ -26,13 +25,9 @@ use InvalidArgumentException;
  */
 class HttpCommandExecutor implements WebDriverCommandExecutor
 {
-    const DEFAULT_HTTP_HEADERS = [
-        'Content-Type: application/json;charset=UTF-8',
-        'Accept: application/json',
-    ];
-
     /**
-     * @see https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#command-reference
+     * @see
+     *   http://code.google.com/p/selenium/wiki/JsonWireProtocol#Command_Reference
      */
     protected static $commands = [
         DriverCommand::ACCEPT_ALERT => ['method' => 'POST', 'url' => '/session/:sessionId/accept_alert'],
@@ -158,7 +153,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
 
         if (!empty($http_proxy)) {
             curl_setopt($this->curl, CURLOPT_PROXY, $http_proxy);
-            if ($http_proxy_port !== null) {
+            if (!empty($http_proxy_port)) {
                 curl_setopt($this->curl, CURLOPT_PROXYPORT, $http_proxy_port);
             }
         }
@@ -174,7 +169,14 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
 
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, static::DEFAULT_HTTP_HEADERS);
+        curl_setopt(
+            $this->curl,
+            CURLOPT_HTTPHEADER,
+            [
+                'Content-Type: application/json;charset=UTF-8',
+                'Accept: application/json',
+            ]
+        );
         $this->setRequestTimeout(30000);
         $this->setConnectionTimeout(30000);
     }
@@ -222,7 +224,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
      * @param WebDriverCommand $command
      *
      * @throws WebDriverException
-     * @return WebDriverResponse
+     * @return mixed
      */
     public function execute(WebDriverCommand $command)
     {
@@ -261,23 +263,10 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
             curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, $http_method);
         }
 
-        if (in_array($http_method, ['POST', 'PUT'])) {
-            // Disable sending 'Expect: 100-Continue' header, as it is causing issues with eg. squid proxy
-            // https://tools.ietf.org/html/rfc7231#section-5.1.1
-            curl_setopt($this->curl, CURLOPT_HTTPHEADER, array_merge(static::DEFAULT_HTTP_HEADERS, ['Expect:']));
-        } else {
-            curl_setopt($this->curl, CURLOPT_HTTPHEADER, static::DEFAULT_HTTP_HEADERS);
-        }
-
         $encoded_params = null;
 
         if ($http_method === 'POST' && $params && is_array($params)) {
             $encoded_params = json_encode($params);
-        } elseif ($http_method === 'POST' && $encoded_params === null) {
-            // Workaround for bug https://bugs.chromium.org/p/chromedriver/issues/detail?id=2943 in Chrome 75.
-            // Chromedriver now erroneously does not allow POST body to be empty even for the JsonWire protocol.
-            // If the command POST is empty, here we send some dummy data as a workaround:
-            $encoded_params = json_encode(['_' => '_']);
         }
 
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, $encoded_params);
@@ -293,8 +282,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
             if ($params && is_array($params)) {
                 $msg .= sprintf(' with params: %s', json_encode($params));
             }
-
-            throw new WebDriverCurlException($msg . "\n\n" . $error);
+            WebDriverException::throwException(-1, $msg . "\n\n" . $error, []);
         }
 
         $results = json_decode($raw_results, true);
@@ -327,9 +315,7 @@ class HttpCommandExecutor implements WebDriverCommandExecutor
         }
 
         $status = isset($results['status']) ? $results['status'] : 0;
-        if ($status != 0) {
-            WebDriverException::throwException($status, $message, $results);
-        }
+        WebDriverException::throwException($status, $message, $results);
 
         $response = new WebDriverResponse($sessionId);
 

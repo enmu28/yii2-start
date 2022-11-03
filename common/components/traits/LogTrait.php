@@ -1,10 +1,4 @@
 <?php
-/**
- * @author quocdaijr
- * @time 19/05/2020
- * @package common\components\traits
- * @version 1.0
- */
 
 namespace common\components\traits;
 

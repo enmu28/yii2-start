@@ -40,4 +40,19 @@ class m220808_042244_tbl_container extends Migration
         $this->dropForeignKey('fk_vendor', '{{%tbl_container}}');
         $this->dropTable('{{%tbl_container}}');
     }
+
+    /*
+    // Use up()/down() to run migration code without a transaction.
+    public function up()
+    {
+
+    }
+
+    public function down()
+    {
+        echo "m220808_042244_tbl_container cannot be reverted.\n";
+
+        return false;
+    }
+    */
 }

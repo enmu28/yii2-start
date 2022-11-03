@@ -52,14 +52,49 @@ $config = [
             'defaultRoute' => 'rbac-auth-item/index',
         ],
         'hello' => [
-            'class' => backend\modules\hello\Module::class
+            'class' => backend\modules\hello\Module::class,
         ],
-        'hello_rbac' => [
-            'class' => backend\modules\hello_rbac\Module::class
-        ]
     ],
     'as globalAccess' => [
         'class' => common\behaviors\GlobalAccessBehavior::class,
+        'rules' => [
+            [
+                'controllers' => ['sign-in'],
+                'allow' => true,
+                'roles' => ['?'],
+                'actions' => ['login'],
+            ],
+            [
+                'controllers' => ['sign-in'],
+                'allow' => true,
+                'roles' => ['@'],
+                'actions' => ['logout'],
+            ],
+            [
+                'controllers' => ['site'],
+                'allow' => true,
+                'roles' => ['?', '@'],
+                'actions' => ['error'],
+            ],
+            [
+                'controllers' => ['debug/default'],
+                'allow' => true,
+                'roles' => ['?'],
+            ],
+            [
+                'controllers' => ['user'],
+                'allow' => true,
+                'roles' => ['administrator'],
+            ],
+            [
+                'controllers' => ['user'],
+                'allow' => false,
+            ],
+            [
+                'allow' => true,
+                'roles' => ['manager', 'administrator'],
+            ],
+        ],
     ],
 ];
 
